@@ -30,13 +30,3 @@ jobs:
           python3 tools/validate_release.py
           python3 tools/build_site.py
           python3 tools/package_release.py --smoke
-      - name: Small reviewed source package
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
-        with:
-          name: ghostproof-source
-          path: |
-            dist/ghostproof-1.0.0.zip
-            dist/ghostproof-1.0.0.zip.sha256
-            dist/source-manifest.sha256
-          if-no-files-found: error
-          retention-days: 3

@@ -1,9 +1,9 @@
-# Licensing decision pending
+# Licensing and scope
 
-No operative open-source licence is granted for the original code or artwork in this release. The owner has not yet selected a licence; the private package and prepared repository must not be described as MIT-licensed or open source. `package.json` intentionally has no licence field and remains private to prevent accidental package publication.
+The owner's original application and preparation code, tests, tooling, workflows, and original SVG/CSS artwork are offered under the [MIT License](LICENSE). The owner authorized this grant for the original code and art. `package.json` declares `"license": "MIT"` for that code and retains `"private": true` to prevent npm publication; this is independent of GitHub repository visibility.
 
-**Recommendation for the owner's consideration:** MIT for the original application, tests, tooling and original SVG/CSS art. This is a recommendation, not a grant. Only the owner can confirm rights and authorize adding an operative `LICENSE` file and the corresponding package metadata.
+This is a mixed-content release. NASA/NPS quotations, selected containing passages, contractor material, marks, and other third-party material are excluded from the MIT grant and remain subject to their own rights. In particular, `demo/content.json` and screenshots displaying excerpts contain attributed third-party text, not just original code or artwork. See [source credits and third-party boundaries](THIRD_PARTY_NOTICES.md) for source links, contractor credits, and policy caveats.
 
-The challenge guide recommends open-source licensing but does not make it mandatory. Public visibility, a licence grant, hosting and final submission are separate decisions. If the owner selects a licence, update the package allowlist/tests and re-review before release.
+Generated claim text carries no warranty of truth or copyright status; this release does not assert ownership or grant rights in it that have not been established. No claim to original U.S. Government works, agency endorsement, image redistribution licence, or Gemma weight licence is granted. No model weights, agency logos, or downloaded NASA/NPS photographs are shipped.
 
-NASA/NPS excerpts and generated claim text have their own status. No licence of original code may transfer third-party rights or imply agency endorsement. See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). No claim to original U.S. Government works.
+Public release authorization is not legal clearance or a licence from a third party. Source-specific restrictions and the owner's responsibility to assess rights and submission eligibility remain. The five-file website carries the complete MIT notice for original code/art in its HTML source and links here for this scope and the detailed third-party notices.

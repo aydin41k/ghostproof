@@ -1,4 +1,4 @@
-# Prepared only: owner must enable Pages/Actions and authorize public hosting first.
+# Authorized free public route; root verifies review/public visibility before enabling Actions/Pages.
 name: Manually deploy static demo to Pages
 on:
   workflow_dispatch:

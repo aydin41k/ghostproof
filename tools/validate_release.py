@@ -11,6 +11,10 @@ import zipfile
 from build_site import ROOT, SITE_FILES, safe_file
 
 CONTENT_SHA256 = '76d943680f1008b283d31c3dbb5baa3ff8658c88ebe94619dc57a57395447360'
+LICENSE_SHA256 = 'a72e9800d8d589a088253d6ac5df957fe8abf6639e64e562403a319b6b524948'
+LICENSE_SCOPE = ('MIT applies only to original code/art. Attributed third-party excerpts and\n'
+                 'unestablished generated-text rights are excluded; see the Code & licences link.')
+LICENSE_LINK = '<a href="https://github.com/aydin41k/ghostproof/blob/main/LICENSING.md">Code &amp; licences</a>'
 REFERENCE_HASHES = {
     'article_rounds.py': 'f81023876f936a1094a43b0189820146d01b3acc33c49033550fc990ed674f98',
     'catalogue.py': 'b8774a517ddd48bb0f33eeff38a2ab049bd6a338a70f2f40a0fc2b5361843264',
@@ -20,7 +24,7 @@ REFERENCE_HASHES = {
 }
 SOURCE_FILES = (
     '.gitignore', '.github/workflows/ci.yml', '.github/workflows/pages.yml', 'README.md', 'LICENSING.md',
-    'THIRD_PARTY_NOTICES.md', 'package.json', 'render.yaml',
+    'LICENSE', 'THIRD_PARTY_NOTICES.md', 'package.json', 'render.yaml',
     *(f'demo/{name}' for name in SITE_FILES),
     'tools/build_site.py', 'tools/validate_release.py', 'tools/package_release.py',
     'tests/game.test.js', 'tests/client.test.js', 'tests/test_release.py',
@@ -95,6 +99,11 @@ def validate(root=ROOT):
         if digest(safe_file(root, f'reference/local-preparation/{name}').read_bytes()) != expected:
             raise ValueError(f'Historical reference changed: {name}')
     html = (root / 'demo/index.html').read_text()
+    licence = safe_file(root, 'LICENSE').read_bytes()
+    if digest(licence) != LICENSE_SHA256:
+        raise ValueError('Original-code MIT licence checksum mismatch')
+    if f'<!--\n{LICENSE_SCOPE}\n\n{licence.decode("utf-8")}-->' not in html or LICENSE_LINK not in html:
+        raise ValueError('Scoped HTML licence notice/link missing or changed')
     if not all(value in html for value in ('href="./styles.css"', 'src="./app.js" type="module"', 'href="./"', 'Answers are included', 'not connected to VerifyIt')):
         raise ValueError('Relative assets or static disclosure missing')
     for match in re.findall(r'(?:src|href)="([^"]+)"', html):
@@ -105,14 +114,21 @@ def validate(root=ROOT):
         if re.search(r'127\.0\.0\.1|localhost:\d|/api/|localStorage|sessionStorage|sendBeacon|https?://[^\s\'"`]+\.(?:js|css|woff)', code):
             raise ValueError(f'Unexpected live dependency in {name}')
     package = json.loads((root / 'package.json').read_text())
-    if package.get('dependencies') or package.get('devDependencies') or package.get('license') or package.get('private') is not True:
+    if package.get('dependencies') or package.get('devDependencies') or package.get('license') != 'MIT' or package.get('private') is not True:
         raise ValueError('Unexpected dependency/licensing/package-publication change')
     ci = (root / '.github/workflows/ci.yml').read_text()
     if 'pull_request_target' in ci or 'secrets.' in ci or 'contents: write' in ci:
         raise ValueError('Privileged CI configuration')
     pins = re.findall(r'uses: ([^\s]+)', ci)
-    if len(pins) != 4 or not all(re.fullmatch(r'actions/[a-z-]+@[0-9a-f]{40}', pin) for pin in pins):
+    expected_ci_pins = [
+        'actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683',
+        'actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020',
+        'actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065',
+    ]
+    if pins != expected_ci_pins:
         raise ValueError('Unpinned/unexpected action')
+    if 'upload-artifact' in ci or 'retention-days:' in ci or len(re.findall(r'^      - ', ci, re.MULTILINE)) != 4:
+        raise ValueError('Unexpected CI step or retained artifact')
     if 'permissions:\n  contents: read' not in ci:
         raise ValueError('Read-only CI permissions missing')
     pages = (root / '.github/workflows/pages.yml').read_text()
@@ -120,7 +136,7 @@ def validate(root=ROOT):
     if triggers.strip() != 'workflow_dispatch:':
         raise ValueError('Pages must remain manual-only')
     build_job, deploy_job = pages.split('  deploy:\n', 1)
-    if 'pages: write' in build_job or 'id-token: write' in build_job or 'path: site/' not in build_job:
+    if 'pages: write' in build_job or 'id-token: write' in build_job or 'path: site/' not in build_job or 'retention-days: 1\n' not in build_job:
         raise ValueError('Pages build permissions/artifact boundary changed')
     if not all(value in deploy_job for value in ('needs: build', 'pages: write', 'id-token: write', 'name: github-pages')):
         raise ValueError('Pages deploy dependency/permissions/environment missing')

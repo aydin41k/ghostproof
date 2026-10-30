@@ -18,7 +18,7 @@ python3 -m http.server 8080 --bind 127.0.0.1 --directory site
 
 Open <http://127.0.0.1:8080/> in a current browser. Serve **only `site/`**, never the repository or historical reference directory. Browser integrity checking requires HTTPS or localhost; opening an HTML file directly or using an insecure remote HTTP origin is unsupported. Stop your preview with Ctrl+C. If files are missing or fail verification, restore a verified package and reload; “Start a fresh hunt” retries loading without inventing fallback content.
 
-Private repository: [aydin41k/ghostproof](https://github.com/aydin41k/ghostproof). Creation and private visibility are verified, with repository Actions confirmed disabled before the first push. Public/judge access still requires the owner's decision. Public demo or walkthrough URL: **not available yet**. The [release checklist](docs/release-checklist.md) tracks those separate decisions.
+Repository: [aydin41k/ghostproof](https://github.com/aydin41k/ghostproof). The initial release was pushed privately with Actions disabled. The owner has now authorized public visibility, MIT for original code/art, and the free GitHub Pages/standard public Actions route. Public access, a hosted CI run, and deployment are still pending verification. Public demo or walkthrough URL: **not available yet**. The [release checklist](docs/release-checklist.md) tracks the remaining checks.
 
 ## What runs where
 
@@ -47,12 +47,12 @@ The last command extracts the exact source ZIP into a new temporary directory, t
 
 Any HTTPS static host can serve the generated `site/` directory, including a project subpath. No dynamic backend is required. `render.yaml` prepares a static site with automatic deployment switched off; no Render service has been created. Check free-account limits and paid-overage settings before connecting a repository. This cached frontend's Render category eligibility is not assumed.
 
-GitHub Actions CI is prepared and tested locally. Repository Actions are confirmed disabled and must remain so until the owner authorizes enabling them with confirmed free usage controls, or approves a public repository/free-run route. No successful hosted run is claimed. The optional Pages workflow is **manual-only**: after owner authorization, choose GitHub Actions in repository Pages settings and explicitly run “Manually deploy static demo to Pages.” It publishes only `site/`, not the source package. It has not been dispatched. See [hosting/CI evidence](docs/release-checklist.md).
+GitHub Actions CI is prepared and tested locally. After independent review and exact Git-tree verification, root must verify public visibility before enabling Actions on standard public runners. That compute and GitHub Pages are the confirmed free route; this does not claim that arbitrary artifacts or account-wide usage are free. CI validates and rehearses the package without retaining an optional artifact. No successful hosted run is claimed yet. The Pages workflow is **manual-only**: root selects GitHub Actions in repository Pages settings and explicitly runs “Manually deploy static demo to Pages.” It publishes only `site/`, using the required one-day Pages artifact, not the source package. It has not been dispatched. See [hosting/CI evidence](docs/release-checklist.md).
 
 ## Provenance and rights
 
 [Provenance](docs/provenance.md) records accepted candidate hashes and limitations. [Historical preparation code](reference/local-preparation/README.md) is included only for source audit; private source/response ledgers are not shipped, so full historical regeneration from this package is not claimed.
 
-Original-code licensing **awaits the owner's decision**; this package is not yet offered under an open-source licence. See [LICENSING.md](LICENSING.md) and [source credits/third-party boundaries](THIRD_PARTY_NOTICES.md). No NASA/NPS photos or logos are included. The original decorative scenery is code-native SVG/CSS, not source evidence.
+Original code and SVG/CSS artwork are offered under the [MIT License](LICENSE). Attributed third-party excerpts and unestablished generated-text rights are excluded; see [LICENSING.md](LICENSING.md) and [source credits/third-party boundaries](THIRD_PARTY_NOTICES.md). Public release authorization is not third-party legal clearance. No NASA/NPS photos or logos are included. The original decorative scenery is code-native SVG/CSS, not source evidence.
 
 The [submission draft](docs/submission-draft.md), [category status](docs/bonus-checklist.md), and [walkthrough narration](docs/narration-script.md) are preparation aids, not a published entry or eligibility guarantee.

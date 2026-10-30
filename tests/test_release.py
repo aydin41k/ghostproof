@@ -2,6 +2,7 @@
 import contextlib
 import functools
 import hashlib
+import json
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 import os
 from pathlib import Path
@@ -19,7 +20,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'tools'))
 from build_site import build, safe_file, SITE_FILES
 from package_release import package, smoke
-from validate_release import validate, validate_archive, file_list, scan_text, CONTENT_SHA256
+from validate_release import validate, validate_archive, file_list, scan_text, CONTENT_SHA256, LICENSE_SHA256, LICENSE_SCOPE, LICENSE_LINK
 
 
 class QuietHandler(SimpleHTTPRequestHandler):
@@ -42,8 +43,61 @@ class ReleaseTests(unittest.TestCase):
 
     def test_clean_source_has_exact_contract(self):
         self.assertEqual(validate(self.root), file_list(ROOT))
+        self.assertEqual(len(file_list(self.root)), 36)
+        self.assertIn('LICENSE', file_list(self.root))
+        self.assertEqual(hashlib.sha256((self.root / 'LICENSE').read_bytes()).hexdigest(), LICENSE_SHA256)
         self.assertEqual(hashlib.sha256((self.root / 'demo/content.json').read_bytes()).hexdigest(), CONTENT_SHA256)
         self.assertNotIn('data', {p.name for p in self.root.iterdir()})
+
+    def assert_release_rejected(self):
+        for operation in (validate, build, package):
+            with self.subTest(operation=operation.__name__):
+                with self.assertRaises(ValueError):
+                    operation(self.root)
+
+    def test_missing_empty_or_changed_licence_rejected_by_every_entrypoint(self):
+        path = self.root / 'LICENSE'
+        original = path.read_bytes()
+        for changed in (None, b'', original.replace(b'WITHOUT WARRANTY', b'WITH WARRANTY')):
+            with self.subTest(changed=changed is None):
+                if changed is None:
+                    path.unlink()
+                else:
+                    path.write_bytes(changed)
+                self.assert_release_rejected()
+                path.write_bytes(original)
+
+    def test_package_licence_privacy_and_dependencies_rejected_independently(self):
+        path = self.root / 'package.json'
+        original = json.loads(path.read_text())
+        for key, value in [('license', None), ('license', 'Apache-2.0'), ('private', False),
+                           ('dependencies', {'example': '1.0.0'}), ('devDependencies', {'example': '1.0.0'})]:
+            with self.subTest(key=key, value=value):
+                changed = dict(original)
+                if value is None:
+                    changed.pop(key)
+                else:
+                    changed[key] = value
+                path.write_text(json.dumps(changed))
+                self.assert_release_rejected()
+        path.write_text(json.dumps(original))
+
+    def test_html_licence_notice_scope_and_link_required(self):
+        path = self.root / 'demo/index.html'
+        original = path.read_text()
+        licence = (self.root / 'LICENSE').read_text()
+        for changed in (original.replace(licence, ''),
+                        original.replace('WITHOUT WARRANTY', 'WITH WARRANTY'),
+                        original.replace(LICENSE_SCOPE, 'MIT applies to everything.'),
+                        original.replace(LICENSE_LINK, ''),
+                        original.replace('/blob/main/LICENSING.md', '/blob/main/README.md')):
+            path.write_text(changed)
+            self.assert_release_rejected()
+        path.write_text(original)
+        site = build(self.root)
+        self.assertEqual({p.name for p in site.iterdir()}, set(SITE_FILES))
+        self.assertIn(licence, (site / 'index.html').read_text())
+        self.assertIn(LICENSE_LINK, (site / 'index.html').read_text())
 
     def test_site_exact_allowlist_no_private_routes_at_root_and_subpath(self):
         site = build(self.root)
@@ -145,11 +199,16 @@ class ReleaseTests(unittest.TestCase):
         self.assertEqual(validate_archive(archive, self.root), file_list(self.root))
         with zipfile.ZipFile(archive) as bundle:
             self.assertEqual(bundle.namelist(), ['ghostproof/' + name for name in file_list(self.root)])
+            self.assertEqual(bundle.read('ghostproof/LICENSE'), (self.root / 'LICENSE').read_bytes())
             self.assertFalse(any('/site/' in name or '/dist/' in name or '/data/' in name for name in bundle.namelist()))
+            extracted = Path(self.scratch.name) / 'licence-extraction'
+            bundle.extractall(extracted)
+            self.assertEqual((extracted / 'ghostproof/LICENSE').read_bytes(), (self.root / 'LICENSE').read_bytes())
         self.assertEqual(package(self.root).read_bytes(), original)
         checksum = (archive.parent / (archive.name + '.sha256')).read_text().split()[0]
         self.assertEqual(checksum, hashlib.sha256(original).hexdigest())
         self.assertEqual(len((archive.parent / 'source-manifest.sha256').read_text().splitlines()), len(file_list(self.root)))
+        self.assertIn(f'{LICENSE_SHA256}  LICENSE\n', (archive.parent / 'source-manifest.sha256').read_text())
 
     def test_archive_extra_traversal_duplicate_and_changed_member_fail_closed(self):
         archive = package(self.root)
@@ -189,6 +248,7 @@ class ReleaseTests(unittest.TestCase):
         original = pages.read_text()
         for changed in [original.replace('workflow_dispatch:', 'push:'),
                         original.replace('path: site/', 'path: ./'),
+                        original.replace('retention-days: 1', 'retention-days: 3'),
                         original.replace('needs: build', 'needs: other'),
                         original.replace('name: github-pages', 'name: other')]:
             pages.write_text(changed)
@@ -196,9 +256,15 @@ class ReleaseTests(unittest.TestCase):
                 validate(self.root)
         pages.write_text(original)
         ci = self.root / '.github/workflows/ci.yml'
-        ci.write_text(ci.read_text().replace('contents: read', 'contents: write'))
-        with self.assertRaises(ValueError):
-            validate(self.root)
+        original = ci.read_text()
+        self.assertEqual(original.count('uses: actions/'), 3)
+        self.assertNotIn('upload-artifact', original)
+        for changed in (original.replace('contents: read', 'contents: write'),
+                        original + '      - uses: actions/upload-artifact@' + 'a' * 40 + '\n',
+                        original.replace('actions/setup-python@', 'actions/upload-artifact@'),
+                        original + '      - name: Retain optional package\n        run: external-upload dist/\n'):
+            ci.write_text(changed)
+            self.assert_release_rejected()
 
     @unittest.skipIf(os.environ.get('GHOSTPROOF_EXTRACTED_SMOKE') == '1', 'Avoid recursive extraction only; other boundary tests still run')
     def test_fresh_extraction_actual_game_render_tests_build_and_repack(self):
