@@ -12,15 +12,15 @@ After each answer, the game puts the fabrication, correction, exact quotation an
 
 ## Demo
 
-**Authorized primary route: free GitHub Pages, pending independent release review and verified deployment. There is no live URL yet.** The manual-only workflow publishes just the static site after public visibility is verified. The rules also permit a recorded walkthrough; the [shot outline and narration](narration-script.md) cover a full hunt, a wrong answer with evidence, and replay. No video has been recorded/uploaded and no deployment is claimed. Add the verified playable URL before submission.
+**[Play GhostProof](https://aydin41k.github.io/ghostproof/)** — the live HTTPS demo is hosted on free GitHub Pages. Its [manual deployment succeeded](https://github.com/aydin41k/ghostproof/actions/runs/41055015797) on 30 October 2026 for application commit `433ea2542f459e4a407788d99cbb72d3f1420996`. Only the five-file static site is deployed. No video or narration has been generated; the [shot outline and narration script](narration-script.md) remain optional preparation aids.
 
-The earlier local static build was played by the coordinating agent at desktop and 320px mobile widths: a perfect 3/3 hunt and a mixed 2/3 replay. [App-only screenshots and the scoped QA record](browser-qa.md) are included in the source package. This is local browser smoke evidence, not hosted verification or an exhaustive accessibility audit.
+The coordinating agent played the actual public site at 1280px desktop and 320px reduced-motion mobile widths: a perfect 3/3 hunt and a mixed 2/3 replay, including the wrong sprite answer and paired correction. The hosted checks recorded one initial content request, no replay requests, and no captured page warnings/errors. [The scoped QA record](browser-qa.md) separates this deployed verification from the four earlier local screenshots in the source package. This is browser smoke evidence, not an exhaustive accessibility audit.
 
 The public-demo design is intentionally simple: cached content, no accounts and no live inference. Answers are inspectable in the browser bundle. It is a learning game, not a secure competition or a fact-checking service.
 
 ## Code
 
-Repository: [aydin41k/ghostproof](https://github.com/aydin41k/ghostproof). The initial release was pushed privately with Actions disabled. The owner has authorized public visibility and the free standard public Actions/Pages route; anonymous judge access is pending verification. This draft is incomplete until that access and the demo are verified.
+Public repository: [aydin41k/ghostproof](https://github.com/aydin41k/ghostproof), verified accessible anonymously on 30 October 2026. The initial release was pushed privately with Actions disabled; after independent review, the approved public-release commit was pushed and public visibility verified before standard public Actions were enabled. Subsequent evidence-only documentation updates do not change the deployed game assets.
 
 The source package contains the static application, exact accepted public content, dependency-free tests, a five-file site builder, deterministic ZIP tooling, and the original preparation modules as labelled historical source references. Private transport bodies and model responses are excluded. Original code and SVG/CSS artwork are offered under MIT; [licensing scope and third-party exclusions](../LICENSING.md) explain why attributed excerpts and unestablished generated-text rights are not covered by that grant.
 
@@ -32,7 +32,7 @@ The hardest part was deciding what a false claim means. A missing detail is not 
 
 Packaging exposed a second boundary: the private preparation validator correctly needs private evidence, but a clean public demo must not. The release therefore exports only accepted claims and selected contextual evidence into a separate versioned schema. The original validator stays strict. The browser checks the content digest and shape; neither check pretends to prove truth.
 
-Vanilla JavaScript modules, Node's built-in tests and Python's standard library keep the released game reproducible without an install step. Tests cover all eight win/loss sequences, answer locking, replay, malformed content, source URL restrictions and archive allowlists. An extracted-package rehearsal runs the game/client tests and rebuilds outside the original checkout. GitHub Actions is prepared for these checks; the free public route is authorized but review and verified public visibility must precede enabling it. **No hosted CI run is claimed yet.**
+Vanilla JavaScript modules, Node's built-in tests and Python's standard library keep the released game reproducible without an install step. Tests cover all eight win/loss sequences, answer locking, replay, malformed content, source URL restrictions and archive allowlists. An extracted-package rehearsal runs the game/client tests and rebuilds outside the original checkout. [Hosted GitHub Actions CI passed](https://github.com/aydin41k/ghostproof/actions/runs/41054856320) on 30 October 2026 for the deployed application commit: 53 Node tests, 17 Python tests, release validation and clean-extraction rebuild/repack. Only the recursive extraction case is skipped inside the extracted child suite. The run succeeded with non-blocking runner/action migration notices, documented in the [release record](release-checklist.md).
 
 Codex agents materially planned, implemented, tested and drafted this entry; the owner directed the project. Editorial review of model output was performed by a separate agent, not passed off as human fact-checking. Fresh browser QA was performed by the coordinating agent using the actual app controls.
 
@@ -52,7 +52,7 @@ The ghost is theatrical; the evidence is not. A church, a UFO scene and a storm 
 
 **Gemma:** implemented. The accepted claims were actually generated by local Gemma and separately source-reviewed. No inference occurs during play; final category eligibility is the judges' decision.
 
-**GitHub Copilot category via GitHub Actions:** prepared workflow and locally executed checks only. The category permits Actions automation; no Copilot generation or successful hosted Actions run is claimed. A verified run is still needed before presenting this as completed category use.
+**GitHub Copilot category via GitHub Actions:** demonstrated automation through the [successful hosted CI run](https://github.com/aydin41k/ghostproof/actions/runs/41054856320) and [Pages deployment](https://github.com/aydin41k/ghostproof/actions/runs/41055015797). The category permits Actions automation; no Copilot-generation claim is made, and final category eligibility remains the judges' decision.
 
 Render hosting, ElevenLabs narration, Entire session tooling and a `.tech` domain are not claimed as used. The [category checklist](bonus-checklist.md) separates useful prepared work from integrations that do not exist.
 
@@ -60,7 +60,7 @@ Render hosting, ElevenLabs narration, Entire session tooling and a `.tech` domai
 
 ### Author checklist — remove before publishing
 
-- Add the real walkthrough/demo URL and confirm the repository contains the pushed release and is accessible to judges. Before staging the article, use the first heading as its title and replace repository-relative document links with verified repository document links or concise prose; private links still require access.
+- Recheck the linked live demo and public repository before submission. Before updating the existing unpublished article, use the first heading as its title and replace repository-relative document links with verified public repository document links or concise prose.
 - Review the narrative and source/contractor-text rights, and verify the authorized MIT/public release is represented accurately. Authorization is not third-party legal clearance. Add a personal perspective only if it is genuinely yours; no biographical or eligibility claim was invented here.
 - Confirm challenge-window/new-work and personal age/country/rights eligibility against the official rules. One entry/one win; no guarantee of category eligibility is made.
 - Required tags are `devchallenge` and `hf26challenge`. Retain `fully_autonomous` unless meaningful human rewriting changes the appropriate disclosure. No session transcript is shared.

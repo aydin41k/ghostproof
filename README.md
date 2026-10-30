@@ -6,6 +6,8 @@ The rooms cover **St Paul's ghost stories**, **NASA's independent UAP study**, a
 
 ![GhostProof static demo introduction](docs/media/static-intro.jpg)
 
+[Play the live demo](https://aydin41k.github.io/ghostproof/) · [Public source](https://github.com/aydin41k/ghostproof)
+
 ## Play from a clean clone or ZIP
 
 Requires Node.js 22+ and Python 3.10+. There are no package dependencies to install, accounts to create, API keys to provide, or model weights to download. From this directory:
@@ -18,7 +20,7 @@ python3 -m http.server 8080 --bind 127.0.0.1 --directory site
 
 Open <http://127.0.0.1:8080/> in a current browser. Serve **only `site/`**, never the repository or historical reference directory. Browser integrity checking requires HTTPS or localhost; opening an HTML file directly or using an insecure remote HTTP origin is unsupported. Stop your preview with Ctrl+C. If files are missing or fail verification, restore a verified package and reload; “Start a fresh hunt” retries loading without inventing fallback content.
 
-Repository: [aydin41k/ghostproof](https://github.com/aydin41k/ghostproof). The initial release was pushed privately with Actions disabled. The owner has now authorized public visibility, MIT for original code/art, and the free GitHub Pages/standard public Actions route. Public access, a hosted CI run, and deployment are still pending verification. Public demo or walkthrough URL: **not available yet**. The [release checklist](docs/release-checklist.md) tracks the remaining checks.
+Public repository: [aydin41k/ghostproof](https://github.com/aydin41k/ghostproof). Anonymous source access and the [live HTTPS demo](https://aydin41k.github.io/ghostproof/) were verified on 30 October 2026. The initial release was pushed privately with Actions disabled; public visibility was verified before standard public Actions were enabled. The [release checklist](docs/release-checklist.md) records the successful hosted runs and the remaining owner submission checks.
 
 ## What runs where
 
@@ -47,7 +49,7 @@ The last command extracts the exact source ZIP into a new temporary directory, t
 
 Any HTTPS static host can serve the generated `site/` directory, including a project subpath. No dynamic backend is required. `render.yaml` prepares a static site with automatic deployment switched off; no Render service has been created. Check free-account limits and paid-overage settings before connecting a repository. This cached frontend's Render category eligibility is not assumed.
 
-GitHub Actions CI is prepared and tested locally. After independent review and exact Git-tree verification, root must verify public visibility before enabling Actions on standard public runners. That compute and GitHub Pages are the confirmed free route; this does not claim that arbitrary artifacts or account-wide usage are free. CI validates and rehearses the package without retaining an optional artifact. No successful hosted run is claimed yet. The Pages workflow is **manual-only**: root selects GitHub Actions in repository Pages settings and explicitly runs “Manually deploy static demo to Pages.” It publishes only `site/`, using the required one-day Pages artifact, not the source package. It has not been dispatched. See [hosting/CI evidence](docs/release-checklist.md).
+GitHub Actions [CI passed](https://github.com/aydin41k/ghostproof/actions/runs/41054856320) and [Pages deployment succeeded](https://github.com/aydin41k/ghostproof/actions/runs/41055015797) for application commit `433ea2542f459e4a407788d99cbb72d3f1420996` on 30 October 2026. Standard public-runner compute and GitHub Pages are the confirmed free route; this does not claim that arbitrary artifacts or account-wide usage are free. CI validates and rehearses the package without retaining an optional artifact. Pages remains **manual-only** and publishes only `site/`, using the required one-day deployment artifact, not the source package. All five hosted assets matched the reviewed build; deployed desktop and mobile hunts passed the [scoped browser checks](docs/browser-qa.md). Later evidence-only documentation updates do not change those deployed assets. See [hosting/CI evidence](docs/release-checklist.md), including non-blocking runner notices.
 
 ## Provenance and rights
 
