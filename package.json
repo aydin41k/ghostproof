@@ -1,0 +1,14 @@
+{
+  "name": "ghostproof",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Three source-reviewed, cached local-Gemma rounds in a static Halloween game",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "test": "node --test tests/*.test.js && python3 -m unittest discover -s tests -p 'test*.py' -v",
+    "validate": "python3 tools/validate_release.py",
+    "build": "python3 tools/build_site.py",
+    "package": "python3 tools/package_release.py"
+  }
+}

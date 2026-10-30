@@ -1,0 +1,34 @@
+<!doctype html>
+<!-- Cached browser-local adaptation; answers are bundled and inspectable. -->
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="dark"><meta name="referrer" content="no-referrer"><title>GhostProof · Spot the Fake</title><link rel="stylesheet" href="./styles.css"><script src="./app.js" type="module"></script></head>
+<body>
+  <div class="haunting" aria-hidden="true">
+    <div class="moon"></div><div class="fog"></div>
+    <svg class="bat bat-one" viewBox="0 0 100 45"><path d="M50 19 44 8 40 19C28 5 17 3 0 0L12 30 25 24 36 38 50 32 64 38 75 24 88 30 100 0C83 3 72 5 60 19L56 8Z"/></svg>
+    <svg class="bat bat-two" viewBox="0 0 100 45"><path d="M50 19 44 8 40 19C28 5 17 3 0 0L12 30 25 24 36 38 50 32 64 38 75 24 88 30 100 0C83 3 72 5 60 19L56 8Z"/></svg>
+  </div>
+  <div class="app">
+    <header><a class="brand" href="./" aria-label="GhostProof home">GhostProof<span>✦</span></a><span class="header-note">CACHED AI STORIES · FICTIONAL HAUNTING</span></header>
+    <main>
+      <aside id="world" class="world" data-scene="threshold" data-outcome="none" data-level="3" aria-label="Fictional haunting">
+        <div class="scene-art" aria-hidden="true">
+          <svg class="scene church" viewBox="0 0 640 170"><path d="M180 170V70L320 12 460 70V170Z"/><path class="scene-detail" d="M300 170V110a20 20 0 0 1 40 0v60M218 88v34h28V88Zm176 0v34h28V88ZM306 65h28V43h-28Z"/></svg>
+          <svg class="scene ufo" viewBox="0 0 640 170"><path d="M0 155 110 133 210 160 340 140 450 160 550 130 640 155V170H0Z"/><g class="scene-detail"><ellipse cx="320" cy="70" rx="80" ry="16"/><path d="M276 65c5-44 83-44 88 0ZM105 35h12m-6-6v12m426-13h12m-6-6v12"/></g></svg>
+          <svg class="scene storm" viewBox="0 0 640 170"><path d="M100 95a35 35 0 0 1 45-35 55 55 0 0 1 103-5 42 42 0 0 1 50 40Zm242 10a40 40 0 0 1 50-40 52 52 0 0 1 93-12 45 45 0 0 1 55 52Z"/><path class="scene-detail" d="m132 124-8 20m53-20-8 20m230-12-8 20m53-20-8 20m53-20-8 20"/></svg>
+          <div class="spectral-overlay"></div><div class="wisps"></div>
+          <svg id="deceiver" class="deceiver" viewBox="0 0 120 150"><path d="M10 140V60a50 50 0 0 1 100 0v80l-16-13-17 15-17-15-17 15-17-15Z"/><ellipse cx="42" cy="66" rx="7" ry="11"/><ellipse cx="78" cy="66" rx="7" ry="11"/><ellipse cx="60" cy="94" rx="8" ry="10"/></svg>
+        </div>
+        <p class="fiction-label">FICTIONAL GHOST · DECORATIVE SCENERY, NOT EVIDENCE</p>
+        <p id="ghost-dialogue" class="ghost-dialogue">“I planted one false story among two truths in each room. Catch my lies to break the haunting.”</p>
+        <p id="haunting-state" class="haunting-state">Haunting: 3 / 6 · 0 scenes cleared</p>
+      </aside>
+      <section id="intro" class="stage intro" aria-labelledby="intro-title"><p class="eyebrow">THREE ROOMS. ONE DECEIVER.</p><h1 id="intro-title">Spot the <em>Fake.</em></h1><p class="lead">Catch the lie. Clear the haunting.</p><p class="subtle">Ghost legends, UFO reports, strange storm lights.<br>Correct answers weaken the ghost. Mistakes make it grow.</p><button id="start" class="primary" type="button">Enter the haunting <span aria-hidden="true">↗</span></button><p class="micro">Fictional ghost. Source-backed NPS and NASA history, lore and research.<br>Curator-selected topics; claims written by local Gemma, source-reviewed and cached.<br>“Supported” means supported in the stated source scope, not proof of ghosts or aliens.</p></section>
+      <section id="loading" class="stage loading" aria-labelledby="loading-title" hidden><p class="eyebrow" id="loading-progress">ROUND 1 / 3</p><h2 id="loading-title" tabindex="-1">Reading reviewed ghost-lore, UFO and storm-light rounds</h2><p id="elapsed" class="lead">0 seconds elapsed</p><p class="subtle">Loading the finite, dated source-reviewed pool.</p><button id="cancel" type="button">Cancel round</button><p class="micro">No new inference or source requests run during play.</p></section>
+      <section id="game" class="stage game" aria-labelledby="round-title" hidden><div class="round-meta"><span id="progress"></span><span id="score"></span></div><h2 id="round-title" tabindex="-1"></h2><p id="round-scope" class="topic-scope"></p><p id="game-instruction" class="subtle">One claim is fabricated. Which one?</p><fieldset><legend class="sr-only">Choose the fabricated claim</legend><div id="posts" class="posts"></div></fieldset><details id="clue"><summary>Open the source trail <span>FREE</span></summary><div id="clue-content"></div></details><div id="feedback" class="feedback" hidden><h3 id="feedback-title" tabindex="-1"></h3><p id="feedback-copy"></p></div><div class="controls"><button id="lock" class="primary" type="button" disabled>Lock my answer</button><button id="next" class="primary" type="button" hidden>Summon next round</button></div></section>
+      <section id="error" class="stage error" aria-labelledby="error-title" hidden><p class="eyebrow">THE SIGNAL FADED</p><h2 id="error-title" tabindex="-1">No round accepted.</h2><p id="error-copy" class="subtle"></p><div class="controls"><button id="retry" class="primary" type="button">Try again</button><button id="fresh" type="button">Start a fresh hunt</button></div><p class="micro">We’d rather abstain than pass unsupported claims off as facts.</p></section>
+      <section id="results" class="stage results" aria-labelledby="result-title" hidden><p class="eyebrow">HUNT COMPLETE</p><h2 id="result-title" tabindex="-1">The <em>reveal.</em></h2><p id="final-score" class="big-score"></p><p id="takeaway" class="subtle"></p><button id="replay" class="primary" type="button">Hunt again</button><p class="micro">Replay remixes the same cached AI-written pool. Topics and claims repeat.</p></section>
+      <p id="status" class="sr-only" role="status" aria-live="polite"></p>
+    </main>
+    <footer><p class="disclaimer">Cached, browser-local demo: no live inference, accounts or telemetry. Answers are included in the static bundle and can be inspected. Initial loading needs this site's files; play and replay make no model or source requests. Offline reload is not provided.</p><p>Don't let fake stories haunt your feed. <a href="https://chromewebstore.google.com/detail/verifyit/figkkjefkejcdcmigcibbggjmojihjbg" target="_blank" rel="noopener noreferrer">Install the VerifyIt Chrome extension</a> or visit <a href="https://verifyit.app" target="_blank" rel="noopener noreferrer">verifyit.app</a>.</p><p class="disclaimer">Fact-checking tools can be wrong—review sources. This static demo is not connected to VerifyIt.</p></footer>
+  </div>
+</body></html>

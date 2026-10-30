@@ -1,0 +1,9 @@
+# Historical source audit only
+
+These five unchanged Python modules are the actual local implementation used by the earlier loopback prototype and its preparation chain. They are included so readers can inspect the finite-topic constraints, strict source/request/review bindings, rejected-attempt handling and server-owned grading that preceded the static adaptation.
+
+They are **not a second deployable application**. Private `data/` records, full source pages, request/fetch ledgers, raw model responses, rejected outputs and model weights are deliberately absent. Some imports/dependencies belong to earlier preparation paths; the five files are a labelled partial audit snapshot, not a clean-clone regeneration kit. Do not run a “fetch everything” or drafting command from these references. No new model/source call budget is authorized.
+
+`spooky_rounds.py` is the active three-topic provider. `article_rounds.py` and `catalogue.py` supply its historical parser/validation helpers. `server.py` shows the original local-only runtime; `haunting_rounds.py` records the earlier finite-theme preparation pattern for comparison and is not the active released content provider. Linux-specific `fcntl` locking appears in the original preparation code.
+
+Loopback addresses and API route constants in these unchanged audit files are historical implementation details, not live dependencies of `demo/`. The reference `haunting_rounds.py` uses an older “human editorial” wording; the accepted spooky release was separately **agent editorial reviewed**, not represented as a human fact-check. Exact raw-file hashes are pinned in `tools/validate_release.py`. Their inclusion does not weaken the original private validator or imply that private historical provenance can be reconstructed from the public export.

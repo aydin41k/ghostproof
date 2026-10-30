@@ -1,0 +1,220 @@
+{
+  "schema": "ghostproof-public-v1",
+  "model": "gemma4-e4b-local:latest",
+  "contract": "spooky-source-paraphrases-1",
+  "prepared_at": "2026-10-29T23:40:55Z",
+  "provenance": {
+    "source_hash": "1e43c2fdf1fcf47837deeaeaba43e57e58897e837f0fca15ce126d358041f559",
+    "ledger_hash": "5e997c10ed7b1109b605ed397cb55d86d62d3343d7c96b71edf82d54fc55b676",
+    "review_hash": "6aa34d65639e1a9fc67146edaa811ff491b7e92bc16ad8d3759730888689e3b2"
+  },
+  "topics": [
+    {
+      "topic": "St Paul's ghost stories",
+      "scene": "church",
+      "category": "ghost_lore",
+      "scope": "The history behind local ghost stories; this article does not prove a haunting.",
+      "claims": [
+        {
+          "text": "NPS links Standard's burial and reburial to local ghost stories.",
+          "is_false": false,
+          "correction": "",
+          "explanation": "Supported by the retained source passage.",
+          "source_id": "S-ghosts",
+          "evidence": {
+            "kind": "article",
+            "quote": "His burial beneath the earlier wooden meetinghouse in 1760 and subsequent removal of the coffin bearing his remains for re-interment under the extant stone church in the early 1800s is the stuff of most of the popular ghost stories that have confounded the site for 250 years.",
+            "review": "Separately source-reviewed; exact quotations are evidence, not an automatic truth guarantee.",
+            "editorial_context": {
+              "text": "Thomas Standard is surely one of the giants of the history of St. Paul’s Church. The minister for 33 years, he purchased the small bronze bell from a London foundry in 1758 that still hangs in the belfry. His burial beneath the earlier wooden meetinghouse in 1760 and subsequent removal of the coffin bearing his remains for re-interment under the extant stone church in the early 1800s is the stuff of most of the popular ghost stories that have confounded the site for 250 years.",
+              "passage_id": "P2"
+            }
+          }
+        },
+        {
+          "text": "Standard and his wife's coffins were damaged during the church's Revolutionary War dismantling.",
+          "is_false": true,
+          "correction": "Standard and his wife's coffins were not damaged during the church's Revolutionary War dismantling.",
+          "explanation": "The source explicitly states the coffins were not damaged, contradicting the fake claim of damage.",
+          "source_id": "S-ghosts",
+          "evidence": {
+            "kind": "article",
+            "quote": "The wooden church was dismantled during the Revolutionary War by armies requiring fuel to heat the stone and brick St. Paul’s church which they converted into a field hospital. The coffins of Standard and his wife were not damaged, but their exact location was difficult to determine since the building had been destroyed.",
+            "review": "Separately source-reviewed; exact quotations are evidence, not an automatic truth guarantee.",
+            "editorial_context": {
+              "text": "The wooden church was dismantled during the Revolutionary War by armies requiring fuel to heat the stone and brick St. Paul’s church which they converted into a field hospital. The coffins of Standard and his wife were not damaged, but their exact location was difficult to determine since the building had been destroyed. In 1818, 58 years after his passing, parishioners exhumed the coffins of Standard and his wife, re-interring them under the east wing of the extant St. Paul’s. A memorial tablet, visible today on a basement wall, was added in 1875. Those lengthy delays in re-interment and memorializing the former rector provide the backdrop for an array of tantalizing ghost stories still swirling around St. Paul’s.",
+              "passage_id": "P3"
+            }
+          }
+        },
+        {
+          "text": "Standard's bronze bell remains in St Paul's belfry.",
+          "is_false": false,
+          "correction": "",
+          "explanation": "Supported by the retained source passage.",
+          "source_id": "S-ghosts",
+          "evidence": {
+            "kind": "article",
+            "quote": "The minister for 33 years, he purchased the small bronze bell from a London foundry in 1758 that still hangs in the belfry.",
+            "review": "Separately source-reviewed; exact quotations are evidence, not an automatic truth guarantee.",
+            "editorial_context": {
+              "text": "Thomas Standard is surely one of the giants of the history of St. Paul’s Church. The minister for 33 years, he purchased the small bronze bell from a London foundry in 1758 that still hangs in the belfry.",
+              "passage_id": "P1"
+            }
+          }
+        }
+      ],
+      "prepared_at": "2026-10-29T23:40:55Z",
+      "pool_size": 3,
+      "topic_id": "ghosts",
+      "candidate_hash": "b863af936b34cccdd69cfd2fce686bd55181b388b985e7623594ae19e1284681",
+      "sources": [
+        {
+          "id": "S-ghosts",
+          "title": "Thomas Standard: The Colonial era minister buried beneath St. Paul's Church (U.S. National Park Service)",
+          "publisher": "National Park Service",
+          "url": "https://www.nps.gov/articles/000/thomas-standard-the-colonial-era-minister-buried-beneath-st-paul-s-church.htm",
+          "retrieved_at": "2026-10-29T23:23:20Z"
+        }
+      ]
+    },
+    {
+      "topic": "Sprites: strange storm lights",
+      "scene": "storm",
+      "category": "eerie_phenomena",
+      "scope": "An observed atmospheric phenomenon, not a supernatural spirit.",
+      "claims": [
+        {
+          "text": "Sprites are associated with powerful lightning events.",
+          "is_false": false,
+          "correction": "",
+          "explanation": "Supported by the retained source passage.",
+          "source_id": "S-sprites",
+          "evidence": {
+            "kind": "article",
+            "quote": "Sprites—an atmospheric phenomenon associated with powerful lightning events—occur in the mesosphere.",
+            "review": "Separately source-reviewed; exact quotations are evidence, not an automatic truth guarantee.",
+            "editorial_context": {
+              "text": "Sprites—an atmospheric phenomenon associated with powerful lightning events—occur in the mesosphere. This layer of the atmosphere is about 50-85 kilometers (31-53 miles) above Earth’s surface, far higher than the tops of cumulonimbus clouds associated with thunderstorms.",
+              "passage_id": "P1"
+            }
+          }
+        },
+        {
+          "text": "Sprites are positioned near the tops of cumulonimbus clouds.",
+          "is_false": true,
+          "correction": "Sprites occur far above those cloud tops.",
+          "explanation": "The fake incorrectly places sprites near cloud tops, contradicting the source stating they are far higher.",
+          "source_id": "S-sprites",
+          "evidence": {
+            "kind": "article",
+            "quote": "Sprites—an atmospheric phenomenon associated with powerful lightning events—occur in the mesosphere. This layer of the atmosphere is about 50-85 kilometers (31-53 miles) above Earth’s surface, far higher than the tops of cumulonimbus clouds associated with thunderstorms.",
+            "review": "Separately source-reviewed; exact quotations are evidence, not an automatic truth guarantee.",
+            "editorial_context": {
+              "text": "Sprites—an atmospheric phenomenon associated with powerful lightning events—occur in the mesosphere. This layer of the atmosphere is about 50-85 kilometers (31-53 miles) above Earth’s surface, far higher than the tops of cumulonimbus clouds associated with thunderstorms.",
+              "passage_id": "P3"
+            }
+          }
+        },
+        {
+          "text": "The photographed sprite has red tendrils associated with jellyfish sprites.",
+          "is_false": false,
+          "correction": "",
+          "explanation": "Supported by the retained source passage.",
+          "source_id": "S-sprites",
+          "evidence": {
+            "kind": "article",
+            "quote": "The sprite in this photograph has red tendrils associated with jellyfish sprites.",
+            "review": "Separately source-reviewed; exact quotations are evidence, not an automatic truth guarantee.",
+            "editorial_context": {
+              "text": "The sprite in this photograph has red tendrils associated with jellyfish sprites.",
+              "passage_id": "P2"
+            }
+          }
+        }
+      ],
+      "prepared_at": "2026-10-29T23:40:55Z",
+      "pool_size": 3,
+      "topic_id": "sprites",
+      "candidate_hash": "16babc0972fac6714c41bfd358bb2a479456a367f3d9bc215699db10e9d55cd8",
+      "sources": [
+        {
+          "id": "S-sprites",
+          "title": "Sprites, Camera, Action! - NASA Science",
+          "publisher": "NASA",
+          "url": "https://science.nasa.gov/earth/earth-observatory/sprites-camera-action-153422/",
+          "retrieved_at": "2026-10-29T23:30:07Z"
+        }
+      ]
+    },
+    {
+      "topic": "UFOs and NASA's UAP study",
+      "scene": "ufo",
+      "category": "ufo_reports",
+      "scope": "Recorded observations and a specific NASA study; unexplained does not identify an origin.",
+      "claims": [
+        {
+          "text": "NASA uses Unidentified Anomalous Phenomena for UAP, consistent with NDAA.",
+          "is_false": false,
+          "correction": "",
+          "explanation": "Supported by the retained source passage.",
+          "source_id": "S-uap",
+          "evidence": {
+            "kind": "article",
+            "quote": "NASA refers to UAP as “Unidentified Anomalous Phenomena” instead of “Unidentified Aerial Phenomena”. NASA’s UAP independent study was largely focused on aerial phenomena.",
+            "review": "Separately source-reviewed; exact quotations are evidence, not an automatic truth guarantee.",
+            "editorial_context": {
+              "text": "6. Does NASA refer to UAP as Unidentified Anomalous Phenomena? To be consistent with the National Defense Authorization Act (NDAA), NASA refers to UAP as “Unidentified Anomalous Phenomena” instead of “Unidentified Aerial Phenomena”. NASA’s UAP independent study was largely focused on aerial phenomena.",
+              "passage_id": "P1"
+            }
+          }
+        },
+        {
+          "text": "The independent UAP study team focused on future evaluation methods using science and data.",
+          "is_false": false,
+          "correction": "",
+          "explanation": "Supported by the retained source passage.",
+          "source_id": "S-uap",
+          "evidence": {
+            "kind": "article",
+            "quote": "The UAP independent study team’s main focus for the report was to come up with a way in which to evaluate and study UAPs going forward by using data, technology and the tools of science.",
+            "review": "Separately source-reviewed; exact quotations are evidence, not an automatic truth guarantee.",
+            "editorial_context": {
+              "text": "7. What did NASA’s 2023 Independent report on UAPs cover? To learn more, you may read the UAP Independent Study Team Final Report or watch NASA’s Media Briefing. The UAP independent study team’s main focus for the report was to come up with a way in which to evaluate and study UAPs going forward by using data, technology and the tools of science. It is not a review of previous UAP incidents. The report was published with the intent to inform NASA on what possible data could be collected in the future, and how it can be collected, to shed light on UAP.",
+              "passage_id": "P2"
+            }
+          }
+        },
+        {
+          "text": "The independent UAP team used classified data for its study.",
+          "is_false": true,
+          "correction": "The independent UAP team used unclassified data for its study.",
+          "explanation": "The source explicitly states the team only studied unclassified data, contradicting the claim of classified data use.",
+          "source_id": "S-uap",
+          "evidence": {
+            "kind": "article",
+            "quote": "Possessing a security clearance was not a requirement as the team is only studying unclassified data.",
+            "review": "Separately source-reviewed; exact quotations are evidence, not an automatic truth guarantee.",
+            "editorial_context": {
+              "text": "10. How were the independent study team members selected? Our UAP Independent Study Team was made up of some of the world’s leading scientists, data and super intelligence practitioners, aerospace safety experts, all with a specific charge, which was to tell us how to apply the full focus of science and data to UAP. Our independent study members were all active in the UAP community and acted in accordance with FACA committee rules and regulations. All members successfully submitted financial disclosures and had a comprehensive government ethics briefing to be part of the study team. Each member of the team was appointed in accordance with the Federal Advisory Committee Act, which is the gold standard to ensure independent and objective advice. Possessing a security clearance was not a requirement as the team is only studying unclassified data. All members were either special government employees or regular government employees who are subject to government ethics rules, which NASA takes very seriously.",
+              "passage_id": "P3"
+            }
+          }
+        }
+      ],
+      "prepared_at": "2026-10-29T23:40:55Z",
+      "pool_size": 3,
+      "topic_id": "uap",
+      "candidate_hash": "3d04111d45d42763eff5a6995add9c56ee1dfd56716113ddacc7c53f1c844b0a",
+      "sources": [
+        {
+          "id": "S-uap",
+          "title": "UAP FAQs - NASA Science",
+          "publisher": "NASA",
+          "url": "https://science.nasa.gov/uap/faqs/",
+          "retrieved_at": "2026-10-29T23:30:07Z"
+        }
+      ]
+    }
+  ]
+}
