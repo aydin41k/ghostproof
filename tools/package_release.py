@@ -48,7 +48,9 @@ def smoke(archive, root=ROOT):
             ['python3', 'tools/validate_release.py'],
             ['node', '--check', 'demo/app.js'],
             ['node', '--check', 'demo/game.js'],
-            ['node', '--test', 'tests/game.test.js', 'tests/client.test.js'],
+            ['node', '--check', 'local/app.js'],
+            ['node', '--test', 'tests/game.test.js', 'tests/client.test.js', 'tests/local-client.test.js'],
+            ['python3', 'local/server.py', '--help'],
             ['python3', '-m', 'unittest', 'discover', '-s', 'tests', '-p', 'test*.py', '-v'],
             ['python3', 'tools/build_site.py'],
             ['python3', 'tools/package_release.py'],
@@ -58,7 +60,7 @@ def smoke(archive, root=ROOT):
         # Package bytes must be reproducible after a clean build/extraction.
         if digest((extracted / 'dist' / NAME).read_bytes()) != digest(Path(archive).read_bytes()):
             raise ValueError('Extracted package is not reproducible')
-    print('Fresh extracted-package smoke PASS: actual game/client tests, full hunts/reset, build, deterministic repack.')
+    print('Fresh extracted-package smoke PASS: static/local client and real loopback tests, continuous hunts/reset, build, deterministic repack.')
 
 
 if __name__ == '__main__':

@@ -1,4 +1,4 @@
-"""Validate the finite public release, without private records or network calls."""
+"""Validate the static demo and local source release without network calls."""
 import argparse
 import hashlib
 import json
@@ -28,6 +28,9 @@ SOURCE_FILES = (
     *(f'demo/{name}' for name in SITE_FILES),
     'tools/build_site.py', 'tools/validate_release.py', 'tools/package_release.py',
     'tests/game.test.js', 'tests/client.test.js', 'tests/test_release.py',
+    'local/server.py', 'local/generation.py', 'local/sources.py',
+    'local/index.html', 'local/app.js', 'local/styles.css',
+    'tests/test_local_generation.py', 'tests/test_local_server.py', 'tests/local-client.test.js',
     'docs/provenance.md', 'docs/submission-draft.md', 'docs/bonus-checklist.md',
     'docs/release-checklist.md', 'docs/narration-script.md',
     'reference/local-preparation/README.md',

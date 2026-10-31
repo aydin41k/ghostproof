@@ -1,4 +1,4 @@
-name: Validate source-reviewed static release
+name: Validate static demo and live local source release
 on:
   push:
   pull_request:
@@ -26,6 +26,8 @@ jobs:
           node --test tests/*.test.js
           node --check demo/app.js
           node --check demo/game.js
+          node --check local/app.js
+          python3 local/server.py --help
           python3 -m unittest discover -s tests -p 'test*.py' -v
           python3 tools/validate_release.py
           python3 tools/build_site.py

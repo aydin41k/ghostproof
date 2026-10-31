@@ -1,6 +1,8 @@
 # Source credits and third-party boundaries
 
-The game includes brief exact text excerpts and their selected containing passages for contextual evidence. It does not include full article bodies, downloaded photographs, agency logos, NASA insignia, the NPS arrowhead, model weights or raw model responses. No claim to original U.S. Government works. NASA and the National Park Service do not endorse this game.
+The cached game includes brief exact text excerpts and their selected containing passages for contextual evidence. It does not include full article bodies, downloaded photographs, agency logos, NASA insignia, the NPS arrowhead, model weights or raw model responses. No claim to original U.S. Government works. NASA and the National Park Service do not endorse this game.
+
+The later live local mode retrieves changing articles from [NASA Science](https://science.nasa.gov/) at runtime. Each reveal attributes its actual title, canonical link, retrieval time, exact quotations and containing prose. These dynamically displayed third-party passages are excluded from the MIT grant and are not included in the source distribution. Government hosting does not establish universal rights: individual articles may include contractor/other credited text; inspect each canonical source and its credits. No blanket redistribution licence, NASA/contractor endorsement or Gemma weight licence is asserted. The user separately obtains Ollama/model weights; no model weights, downloaded imagery or runtime responses ship here.
 
 | Publisher | Source | Retained retrieval timestamp (UTC) |
 | --- | --- | --- |

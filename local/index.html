@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GhostProof — live local hauntings</title><link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="moon" aria-hidden="true"></div><div class="ghost" aria-hidden="true"><span></span></div>
+  <main>
+    <header><a class="wordmark" href="./">GHOST<span>PROOF</span></a><span class="tag">LIVE LOCAL GEMMA</span></header>
+    <section id="intro" class="intro"><p class="eyebrow">THE ARCHIVE IS HAUNTED</p><h1>Two sourced claims.<br>One fabricated ghost.</h1>
+      <p>Catch the fake in fresh NASA articles. Your local Gemma drafts each room, then checks it again against the retrieved source.</p>
+      <p class="small">Live local Gemma + retrieved NASA sources. Requires Ollama, an installed local Gemma model and internet access. Automated checks are not human editorial review or guaranteed truth.</p>
+      <p id="readiness" role="status">Checking local model…</p><button id="start">Enter a fresh hunt</button>
+    </section>
+    <section id="game" hidden aria-labelledby="round-title">
+      <div class="scoreline"><span id="progress"></span><span id="score"></span></div>
+      <h2 id="round-title" tabindex="-1">Preparing a room…</h2><p class="small">Find the one claim directly contradicted by this source. “Supported” means supported by this article.</p>
+      <div id="cards" role="radiogroup" aria-label="Choose the fabricated claim"></div>
+      <button id="lock" disabled>Lock my answer</button>
+      <section id="reveal" hidden><h3 id="feedback-title" tabindex="-1"></h3><p id="feedback-copy"></p><details id="source-details"><summary>Show source evidence</summary><div id="evidence"></div></details></section>
+      <div class="actions"><button id="next" hidden>Next fresh round</button><button id="new" class="secondary">New hunt</button></div>
+    </section>
+    <p id="status" role="status" aria-live="polite" tabindex="-1"></p><div id="error" hidden><p id="error-copy"></p><button id="retry">Retry preparation</button></div>
+    <footer><p>Take your fact-checking beyond the haunted archive.</p><a href="https://verifyit.app/" target="_blank" rel="noopener noreferrer">Explore VerifyIt ↗</a> · <a href="https://chromewebstore.google.com/detail/verifyit/figkkjefkejcdcmigcibbggjmojihjbg" target="_blank" rel="noopener noreferrer">Get the Chrome extension ↗</a><p class="small">GhostProof is an independent game, not connected to VerifyIt. NASA does not endorse this game. <a href="https://github.com/aydin41k/ghostproof/blob/main/LICENSING.md" target="_blank" rel="noopener noreferrer">Code &amp; licences</a> · <a href="https://aydin41k.github.io/ghostproof/" target="_blank" rel="noopener noreferrer">Three-room cached demo</a></p></footer>
+  </main><script src="./app.js" type="module"></script>
+</body></html>

@@ -43,7 +43,7 @@ class ReleaseTests(unittest.TestCase):
 
     def test_clean_source_has_exact_contract(self):
         self.assertEqual(validate(self.root), file_list(ROOT))
-        self.assertEqual(len(file_list(self.root)), 36)
+        self.assertEqual(len(file_list(self.root)), 45)
         self.assertIn('LICENSE', file_list(self.root))
         self.assertEqual(hashlib.sha256((self.root / 'LICENSE').read_bytes()).hexdigest(), LICENSE_SHA256)
         self.assertEqual(hashlib.sha256((self.root / 'demo/content.json').read_bytes()).hexdigest(), CONTENT_SHA256)
